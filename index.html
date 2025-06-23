@@ -28,6 +28,41 @@
             <button class="btn btn-secondary" id="generateReportBtn">
                 <i class="fas fa-file-alt"></i> Сформировать отчет
             </button>
+            <pre id = 'output'></pre>
+            <script>
+                // Обработчик загрузки файла
+                document.getElementById('fileInput').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        const content = e.target.result;
+                        output.textContent = content;
+                        
+                        // Дополнительная обработка содержимого
+                        // Например, разбить на строки или парсить JSON
+                        console.log("Содержимое файла:", content);
+                    };
+
+                    reader.onerror = function(e) {
+                        console.error("Ошибка чтения файла:", e.target.error);
+                        output.textContent = "Ошибка при чтении файла!";
+                    };
+
+                    reader.readAsText(file); // Читаем как текст (можно также readAsDataURL, readAsArrayBuffer)
+                    if (file) {
+                        alert(`Файл "${file.name}" успешно выбран для загрузки`);
+                        // Здесь можно добавить логику для фактической загрузки файла
+                        document.getElementById('output').textContent = reader;
+                    }
+                });
+
+                // Обработчик кнопки формирования отчета
+                document.getElementById('generateReportBtn').addEventListener('click', function() {
+                    alert('Отчет формируется...');
+                    // Здесь можно добавить логику для формирования отчета
+                });
+            </script>
         </div>
     </div>
 </body>
