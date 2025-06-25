@@ -16,7 +16,7 @@ body {
 }
 
 .container2 {
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 200px auto;
     padding: 20px;
     background-color: rgb(255, 255, 255);
@@ -62,15 +62,6 @@ h1 {
     background-color: #2980b9;
 }
 
-.btn-secondary {
-    background-color: #2ecc71;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color: #27ae60;
-}
-
 .btn i {
     margin-right: 8px;
     font-size: 18px;
@@ -97,40 +88,92 @@ h1 {
     font-size: 14px;
 }
 
-@media (max-width: 600px) {
-    .container {
-        margin: 20px;
-        padding: 15px;
-    }
-    
-    h1 {
-        font-size: 24px;
-    }
-    
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
-
+/* Основные стили таблицы */
 table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Ячейки таблицы */
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+  border: 1px solid #e0e0e0;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  transition: all 0.2s ease;
 }
 
+/* Заголовки таблицы */
 th {
-    background-color: #f2f2f2;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
 }
 
-textarea {
-    width: 100%;
-    height: 200px;
-    font-family: monospace;
+/* Строки таблицы */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover td {
+  background-color: #f1f8ff;
+}
+
+/* Стили вкладок */
+.sheet-tabs {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #6feb49;
+}
+
+.sheet-tab {
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  color: #555;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sheet-tab:hover {
+  background-color: #e9e9e9;
+  transform: translateY(-1px);
+}
+
+.sheet-tab.active {
+  background-color: #4CAF50;
+  /* background-color: #4285f4; */
+  color: white;
+  box-shadow: 0 2px 5px rgba(66, 133, 244, 0.3);
+}
+
+/* Контейнер содержимого */
+.sheet-content {
+  display: none;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.sheet-content.active {
+  display: block;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
