@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База учета договоров</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -15,22 +15,21 @@
             <p>Интерфейс работы с отчетами</p>
         </div>
         
-        
         <h1>Управление отчетами</h1>
         
         <div class="button-container">
-            <input type="file" id="fileInput" accept=".txt" class="file-input">
-            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+            <input type="file" id="fileInput"  class="file-input" accept=".xlsx, .xls">
+            
+            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()" onclick="readXLSX()">
                 <i class="fas fa-upload"></i> Загрузить файл
             </button>
 
             <script src="scriptfile.js"></script>
-
-            <button onclick="parseFile()" class="btn btn-secondary">
-                <i class="fas fa-file-alt"></i>Сформировать отчет
-            </button>
         </div>
     </div>
-    <div class="container2" id="output" style = "display: none"></div>
+    <div id = "output" style = "display: none" class = "container2">
+        <div id="sheetTabs" class="sheet-tabs"></div>
+        <div id="sheetContents"></div>
+    </div>
 </body>
 </html>
