@@ -90,7 +90,7 @@ function switchSheet(index) {
 function generateTableHTML(data) {
     if (data.length === 0) return '<p>Нет данных</p>';
 
-    let html = '<table><thead><tr>';
+    let html = '<table class = "tablenew"><thead><tr>';
     // Заголовки (первая строка)
     data[0].forEach(cell => {
         html += `<th>${cell || ''}</th>`;
