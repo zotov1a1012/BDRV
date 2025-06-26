@@ -15,6 +15,34 @@ function readXLSX() {
         alert("Выберите файл!");
         return;
     }
+    const formData = new FormData();
+        formData.append('file', file);
+    
+        // Отправляем файл на сервер
+        fetch('http://127.0.0.1:5000/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Обработка ответа сервера
+            if (data.success) {
+                console.log('Ответ сервера:', data);  // Выводим весь объект data в консоль
+                
+                //document.getElementById('output').textContent = data;
+                // Если дата приходит в data, например data.date, то так:
+                // console.log('Дата с сервера:', data.date);
+
+                // Или выводите в элемент страницы, например:
+                // document.getElementById('output').textContent = JSON.stringify(data);
+            } else {
+                console.error('Ошибка обработки файла на сервере.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка при отправке файла:', error);
+        });
+    
 
     const reader = new FileReader();
     reader.onload = function(e) {
