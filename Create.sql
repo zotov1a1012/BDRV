@@ -12,7 +12,7 @@ CREATE TABLE contracts (
 
 CREATE TABLE service_types (
     id VARCHAR(10) PRIMARY KEY COMMENT 'Код типа услуги (DS, QD, INF)',
-    name VARCHAR(255) NOT NULL COMMENT 'Наименование услуги',
+    name VARCHAR(255) NOT NULL UNIQUE COMMENT 'Наименование услуги',
     description TEXT COMMENT 'Описание услуги',
     INDEX idx_service_type (id)
 ) COMMENT 'Типы оказываемых услуг';
@@ -39,7 +39,7 @@ CREATE TABLE services (
     contract_period_total DECIMAL(15,2) COMMENT 'ИТОГО за весь период договора',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (contract_number) REFERENCES contracts(contract_number),
-    FOREIGN KEY (service_type_id) REFERENCES service_types(id),
+    FOREIGN KEY (service_type_id) REFERENCES service_types(name),
     FOREIGN KEY (specialist_category) REFERENCES specialist_rates(category),
     INDEX idx_contract_service (contract_number, service_type_id)
 ) COMMENT 'Услуги по договорам';
